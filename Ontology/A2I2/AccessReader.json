@@ -1,0 +1,42 @@
+{
+  "@id": "dtmi:au:edu:deakin:a2i2:AccessReader;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": {
+        "en": "access level"
+      },
+      "name": "accessLevel",
+      "schema": "double",
+      "writable": true
+    },
+    {
+      "@type": "Property",
+      "displayName": {
+        "en": "fail mode"
+      },
+      "name": "failMode",
+      "schema": {
+        "@type": "Enum",
+        "enumValues": [
+          {
+            "enumValue": "failclose",
+            "name": "failclose"
+          },
+          {
+            "enumValue": "failopen",
+            "name": "failopen"
+          }
+        ],
+        "valueSchema": "string"
+      },
+      "writable": true
+    }
+  ],
+  "displayName": {
+    "en": "Access reader"
+  },
+  "extends": ["dtmi:digitaltwins:rec_3_3:asset:AccessReader;1", "dtmi:au:edu:deakin:a2i2:Asset;1"],
+  "@context": "dtmi:dtdl:context;2"
+}

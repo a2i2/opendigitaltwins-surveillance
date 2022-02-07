@@ -1,0 +1,21 @@
+{
+  "@id": "dtmi:au:edu:deakin:a2i2:SurveillanceCamera;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": {
+        "en": "privacy cost"
+      },
+      "name": "privacyCost",
+      "schema": "double",
+      "writable": true,
+      "comment": "information entropy (bits)"
+    }
+  ],
+  "displayName": {
+    "en": "Surveillance camera"
+  },
+  "extends": ["dtmi:digitaltwins:rec_3_3:asset:SurveillanceCamera;1", "dtmi:au:edu:deakin:a2i2:Asset;1"],
+  "@context": "dtmi:dtdl:context;2"
+}
