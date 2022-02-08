@@ -8,8 +8,9 @@
         "en": "access level"
       },
       "name": "accessLevel",
-      "schema": "double",
-      "writable": true
+      "schema": "string",
+      "writable": true,
+      "comment": "e.g., visitor, staff, security"
     },
     {
       "@type": "Property",
@@ -21,8 +22,8 @@
         "@type": "Enum",
         "enumValues": [
           {
-            "enumValue": "failclose",
-            "name": "failclose"
+            "enumValue": "failclosed",
+            "name": "failclosed"
           },
           {
             "enumValue": "failopen",
