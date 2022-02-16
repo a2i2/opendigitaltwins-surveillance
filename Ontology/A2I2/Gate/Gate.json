@@ -1,0 +1,18 @@
+{
+  "@id": "dtmi:au:edu:deakin:a2i2:Gate;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Relationship",
+      "displayName": {
+        "en": "input"
+      },
+      "name": "input",
+      "writable": true
+    }
+  ],
+  "displayName": {
+    "en": "Gate"
+  },
+  "@context": "dtmi:dtdl:context;2"
+}
