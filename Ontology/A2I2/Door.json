@@ -1,0 +1,9 @@
+{
+  "@id": "dtmi:au:edu:deakin:a2i2:Door;1",
+  "@type": "Interface",
+  "displayName": {
+    "en": "Door"
+  },
+  "extends": "dtmi:digitaltwins:rec_3_3:asset:Door;1",
+  "@context": "dtmi:dtdl:context;2"
+}

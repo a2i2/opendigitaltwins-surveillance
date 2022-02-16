@@ -1,0 +1,56 @@
+{
+  "@id": "dtmi:au:edu:deakin:a2i2:BarrierAsset;1",
+  "@type": "Interface",
+  "contents": [
+    {
+      "@type": "Property",
+      "displayName": {
+        "en": "direction"
+      },
+      "name": "direction",
+      "description": {
+        "en": "The direction the barrier allows flow. E.g. a turnstile that only permits movement from one space to another"
+      },
+      "dtmi:dtdl:property:schema;2": {
+        "@type": "Enum",
+        "dtmi:dtdl:property:enumValues;2": [
+          {
+            "enumValue": "oneway",
+            "name": "oneway",
+            "description": {
+              "en": "Allows flow only from the 'from' space to the 'to' space"
+            }
+          },
+          {
+            "enumValue": "twoway",
+            "name": "twoway",
+            "description": {
+              "en": "Allows flow in either direction"
+            }
+          },
+          {
+            "enumValue": "none",
+            "name": "none",
+            "description": {
+              "en": "Does not allow flow"
+            }
+          },
+          {
+            "enumValue": "reverse",
+            "name": "reverse",
+            "description": {
+              "en": "Allows flow only from the 'to' space to the 'from' space. E.g. A turnstile that is temporarily reversed to allow flow in the opposite direction to usual"
+            }
+          }
+        ],
+        "valueSchema": "string"
+      },
+      "writable": true
+    }
+  ],
+  "displayName": {
+    "en": "Barrier asset"
+  },
+  "extends": "dtmi:digitaltwins:rec_3_3:asset:BarrierAsset;1",
+  "@context": "dtmi:dtdl:context;2"
+}
