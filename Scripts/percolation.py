@@ -167,13 +167,18 @@ def alpha(network, budget, integral_steps=4, rand_steps=1000):
 
 def percolation(network_json):
     network = Network(network_json)
-    budget = 10 # bits of entropy
-    a = alpha(network, budget)
+    #budget = 10 # bits of entropy
 
-    results = {
-        "alpha": a
-    }
-    return results
+    str = "budget, alpha\n"
+    print("budget, alpha")
+    results = {}
+    for budget in range(0,16+1):
+        a = alpha(network, budget)
+        results[f"alpha_{budget}"] = a
+        print(f"{budget:6d}, {a:.3f}")
+        str += f"{budget:6d}, {a:.3f}\n"
+
+    return results, str
 
 
 if __name__ == "__main__":
@@ -185,5 +190,8 @@ if __name__ == "__main__":
     with open(network_file, 'r') as f:
         network_json = json.load(f)
 
-    results = percolation(network_json)
-    print(json.dumps(results, indent=4))
+    results, str = percolation(network_json)
+    
+    with open("budget-vs-alpha.csv", "w") as f:
+        f.write(str)
+    #print(json.dumps(results, indent=4))
