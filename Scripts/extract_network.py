@@ -29,7 +29,7 @@ def extract(twin_json):
     
     edges = []
     edge_props = []
-    for t in tg.twins("dtmi:digitaltwins:rec_3_3:asset:Door;1"):
+    for t in tg.twins("dtmi:digitaltwins:rec_3_3:asset:BarrierAsset;1"):
         fr = tg.rel_targets("fromSpace", dtId(t), "dtmi:digitaltwins:rec_3_3:core:Space;1")
         to = tg.rel_targets("toSpace", dtId(t), "dtmi:digitaltwins:rec_3_3:core:Space;1") 
         su = tg.rel_targets("servedBy", dtId(t), "dtmi:au:edu:deakin:a2i2:SurveillanceAsset;1")
