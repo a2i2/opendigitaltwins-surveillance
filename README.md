@@ -8,9 +8,10 @@ The ontology in this repository extends Microsoft's [opendigitaltwins-building](
 
 ![DTDL surveillance extensions](Images/dtdl-surveillance-extension.png)
 
+
 ## Sample
 
-The sample directory provides a sample digital twin constructed using the ontology. Both a spreadsheet representation and `.json` export are provided. This can be imported into the [Azure Digital Twins Explorer](https://github.com/Azure-Samples/digital-twins-explorer) tool (don't forget to load the models in the ontology directory first).
+The sample directory provides a sample digital twin constructed using the ontology. Both a spreadsheet representation and `.json` export are provided. This can be imported into the [Azure Digital Twins Explorer](https://github.com/Azure-Samples/digital-twins-explorer) tool (after loading the opendigitaltwins-building models followed by the A2I2 models in the ontology directory).
 
 ![Digital twin of building in Azure Digital Twins Explorer](Images/twin.png)
 
