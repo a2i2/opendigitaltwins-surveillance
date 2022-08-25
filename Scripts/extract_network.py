@@ -39,22 +39,23 @@ def extract(twin_json):
         level = level_total(list_get("accessLevel", ac))
         level_avail = level_avail_total(list_get("availability", ac))
         level_failmode = level_fail_total(list_get("failMode", ac))
-        es = [
-            {
-                "from": dtId(i),
-                "to": dtId(j),
-                "priv": priv,
-                "privAvail": priv_avail,
-                "level": level,
-                "levelAvail": level_avail,
-                "failMode": level_failmode
-            }
-            for i in fr for j in to
-        ]
-        edges += es
+        if t.get("direction", "twoway") in ["twoway", "oneway"]:
+            es = [
+                {
+                    "from": dtId(i),
+                    "to": dtId(j),
+                    "priv": priv,
+                    "privAvail": priv_avail,
+                    "level": level,
+                    "levelAvail": level_avail,
+                    "failMode": level_failmode
+                }
+                for i in fr for j in to
+            ]
+            edges += es
         # Assume we can also exit through door (unless specified otherwise).
-        # Assume that we don't need to prove access to exit via door
-        if t.get("direction", "twoway") == "twoway":
+        # Assume that we don't need to pass access check to exit via door (i.e. only need key/card to enter)
+        if t.get("direction", "twoway") in ["twoway", "reverse"]:
             es_reverse = [
                 {
                     "from": dtId(j),

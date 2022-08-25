@@ -53,7 +53,7 @@ class Perc:
 
     def q(self, a, b):
         e = self.network.get_edge(a, b)
-        return e["levelAvail"]
+        return e["level"]
 
     def m(self, a, b):
         e = self.network.get_edge(a, b)
@@ -62,6 +62,14 @@ class Perc:
     def f(self, a, b):
         e = self.network.get_edge(a, b)
         return 1 - e["privAvail"]
+
+    def f_access(self, a, b):
+        e = self.network.get_edge(a, b)
+        return 1 - e["levelAvail"]
+
+    def f_mode(self, a, b):
+        e = self.network.get_edge(a, b)
+        return e["failMode"]
 
     def z(self, a, b):
         return self.zs[(a, b)]
@@ -76,12 +84,22 @@ class Perc:
 
     # this is the most important function to define (rest will follow)
     def c_ab(self, a, b):
-        if self.q(a, b) > self.rho and self.z(a, b) < self.f(a, b):
-            return 0
+        z0, z1 = self.z(a, b)
+        access_permission = self.q(a, b) > self.rho
+        access_failure = z0 < self.f_access(a, b)
+        access_failure_mode = self.f_mode(a, b)
+        sensor_failure = z1 < self.f(a, b)
 
-        if self.q(a, b) > self.rho and self.z(a, b) >= self.f(a, b):
+        if access_failure_mode == "failclosed":
+            has_access = access_permission and not access_failure
+        else:
+            has_access = access_permission or access_failure
+
+        if has_access:
+            if sensor_failure:
+                return 0
             return self.m(a, b)
-        
+
         return float("inf")
 
     def c_star_od(self, o, d, budget=float("inf")):
@@ -153,7 +171,7 @@ def alpha(network, budget, integral_steps=4, rand_steps=1000):
         for _ in range(rand_steps):
             # Todo: use a seed for repeatability
             zs = {
-              (i, j): random.random()
+              (i, j): [random.random(), random.random()]
               for (i, j) in network.get_edge_keys()
             }
             perc = Perc(network, rho, zs, budget)
